@@ -51,11 +51,15 @@
         .box1 h3 {
             font-size: 30px;
             color: rgb(173, 185, 138);
+            position: relative;
+            z-index: -1;
             transform: translate(999px, 40px);
         }
         .box1 h1 {
             font-size: 40px;
-            transform: translate(999px, 40px);
+            position: relative;
+            z-index: 1s;
+            transform: translate(999px, 50px);
         }
         .button {
             background-color: rgb(221, 230, 191); /* 수정된 부분: 버튼의 배경색 지정 */
@@ -83,6 +87,10 @@
         .one1 {
             background-color: white;
         }
+        .picture img{
+            size: 20px;
+            transform: translate(200px, 70px);
+        }
     </style>
 </head>
 <body>
@@ -92,7 +100,7 @@
     <div class="container">
         <div class="box1">
             <div class="picture">
-
+                
             </div>
             <h3>밥 먹고 갈래요?</h3>
             <h1>따뜻하고 건강한<br>한상을 당신에게 전하다</h1>
