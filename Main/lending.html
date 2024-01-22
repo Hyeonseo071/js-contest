@@ -44,9 +44,7 @@
             bottom: calc(100% - 66% - 3%);
             width: 100%;
             height: 60%;
-        }
-        .picture{
-            
+            overflow: hidden;
         }
         .box1 h3 {
             font-size: 30px;
@@ -58,35 +56,39 @@
         .box1 h1 {
             font-size: 40px;
             position: relative;
-            z-index: 1s;
+            z-index: 1;
             transform: translate(999px, 50px);
         }
         .button {
-            background-color: rgb(221, 230, 191); /* 수정된 부분: 버튼의 배경색 지정 */
-            padding: 10px; /* 추가된 부분: 버튼에 패딩 추가 */
-            border-radius: 5px; /* 추가된 부분: 버튼에 둥근 모서리 추가 */
+            background-color: rgb(209, 218, 179);
+            padding: 10px;
+            border-radius: 5px;
             position: absolute;
-            bottom: 20px; /* 수정된 부분: 프레임 내에서의 위치 조정 */
-            left: 50%; /* 수정된 부분: 가운데 정렬을 위해 추가 */
-            transform: translate(235px, -90px); /* 수정된 부분: 가운데 정렬을 위해 추가 */
+            bottom: 20px;
+            left: 50%;
+            transform: translate(245px, -80px);
         }
         .button h3 {
             color: white;
             font-size: 20px;
-            margin: 0; /* 수정된 부분: 기본 마진 제거 */
+            margin: 0;
             transform: translate(0px, -3px);
+        }
+        .bg-img{
+            background-color: yellow;
+            background-size: 100px;
+            background-image: url(bap.png);
+            width: 100%;
+            height: 100%;
+            background-position: contain;
         }
         .box2 {
             background-color: rgb(221, 230, 191);
             position: fixed;
-            bottom: 0;       /* 하단에 정렬 */
+            bottom: 0;
             width: 100%;
-            height: 31%;    /* 나머지 부분의 차지하도록 설정*/
-            margin-top: 0;  /* 상단 여백 제거*/
-        }
-        .picture img{
-            size: 20px;
-            transform: translate(200px, 70px);
+            height: 31%;
+            margin-top: 0;
         }
     </style>
 </head>
@@ -94,20 +96,33 @@
     <div class="menu">
         <h1>Dacharim</h1>
     </div>
+
     <div class="container">
         <div class="box1">
-            <div class="picture">
-                
-            </div>
             <h3>밥 먹고 갈래요?</h3>
             <h1>따뜻하고 건강한<br>한상을 당신에게 전하다</h1>
-            <div class="button">
+            <div class="button" id="myButton">
                 <h3>다차림 둘러보기</h3>
             </div>
+            <div class="bg-img"></div>
         </div>
+
         <div class="box2">
-            <div class="one1"></div>
         </div>
     </div>
+
+    <script>
+        // 버튼을 클릭했을 때 호출되는 함수
+        function goToMainHtml() {
+            // 다음 페이지의 파일 경로를 여기에 입력하세요.
+            var mainHtml = 'main.html';
+
+            // 현재 창의 위치를 다음 페이지의 파일 경로로 변경
+            window.location.href = mainHtml;
+        }
+
+        // 버튼 요소를 가져와서 클릭 이벤트에 함수 연결
+        document.getElementById('myButton').addEventListener('click', goToMainHtml);
+    </script>
 </body>
 </html>
