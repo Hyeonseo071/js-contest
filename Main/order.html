@@ -24,7 +24,6 @@
 
         .Jumunhagi h3 {
             margin-left: 20px;
-            font-weight: 80;
             position: relative; /* 변경된 부분 */
             bottom: -13px; /* 변경된 부분 */
         }
@@ -43,11 +42,30 @@
         }
 
         .count {
-            background-color: rgb(226, 226, 226);
+            background-color: rgb(255, 255, 255);
             margin-left: 480px;
             margin-top: -32px; /* 음수 값으로 조절하여 위로 이동 */
             width: 250px;
             height: 45px;
+        }
+        .flus{
+            background-color: rgb(169, 255, 169);
+            position: relative;
+            bottom: 45px;
+            margin-left: 150px;
+            width: 30px;
+            height: 30px;
+        }
+        .minus{
+            background-color: rgb(249, 93, 93);
+            position: relative;
+            bottom: 75px;
+            margin-left: 190px;
+            width: 30px;
+            height: 30px;
+        }
+        .num h3{
+            margin-left: 60px;
         }
 
         .custom select {
@@ -137,12 +155,30 @@
             height: 50px;
         }
         .button1{
-            background-color: gray;
+            background-color: rgb(221, 230, 191);;
             position: relative;
             bottom: -25px;
             margin-left: 330px;
             width: 80px;
             height: 40px;
+            border-radius: 10px;
+        }
+        .button1 h3{
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+        .button2{
+            background-color: rgb(221, 230, 191);
+            position: relative;
+            bottom: 15px;
+            margin-left: 520px;
+            width: 80px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        .button2 h3{
+            margin-top: 10px;
+            margin-left: 20px;
         }
     </style>
 </head>
@@ -159,22 +195,30 @@
             <div class="custom">
                 <form action="#">
                     <select name="dishes" id="dish">
-                        <option value="">삼색 채소 볶음밥</option>
-                        <option value="php">양상추 베이컨 볶음밥</option>
-                        <option value="java">황금 오므라이스</option>
-                        <option value="java">비빔밥</option>
+                        <option value="sam">삼색 채소 볶음밥</option>
+                        <option value="yang">양상추 베이컨 볶음밥</option>
+                        <option value="hwang">황금 오므라이스</option>
+                        <option value="bibim">비빔밥</option>
                     </select>
                 </form>
                 <hr>
                 <div class="count">
+                    <div class="num" id="num">
+                        <h3>수량 :</h3>
+                    </div>
+                    <div class="flus" id="flus">
+                        
+                    </div>
+                    <div class="minus" id="minus">
 
+                    </div>
                 </div>
             </div>
         </div>
         <div class="box">
             <div class="box2">
                 <div class="price">
-                    <h3>금액: 000000원</h3>
+                    <h3 id="priceDisplay">금액: 0원</h3>
                 </div>
             </div>
             <div class="box3">
@@ -191,14 +235,88 @@
                     <input type="text" id="adress" placeholder="주소를 입력해주세요." />
                 </div>
 
-                <div class="button1">
-
+                <div class="button1" id="button1">
+                    <h3>주문</h3>
+                </div>
+                <div class="button2">
+                    <h3>취소</h3>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        document.getElementById('dish').addEventListener('change', function () {
+            // 가격을 업데이트하는 함수 호출
+            updatePrice();
+        });
+
+        function updatePrice() {
+            // 선택된 옵션 값 가져오기
+            let selectedDish = document.getElementById('dish').value;
+
+            // 각 옵션에 따른 가격 매핑
+            let prices = {
+                'sam': 15000,
+                'yang': 12000,
+                'hwang': 15000,
+                'bibim': 10000
+            };
+
+            // 선택된 옵션에 해당하는 가격 가져오기
+            let selectedPrice = prices[selectedDish];
+
+            // 가격을 표시하는 h3 업데이트
+            document.getElementById('priceDisplay').innerText = '금액: ' + selectedPrice + '원';
+        }
+
+        // 페이지 로드시 초기 가격 업데이트
+        updatePrice();
+
+        // 버튼을 클릭했을 때 호출되는 함수
+        function goToOrafHtml() {
+            // 다음 페이지의 파일 경로를 여기에 입력하세요.
+            let orafHtml = 'oraf.html';
+            // 현재 창의 위치를 다음 페이지의 파일 경로로 변경
+            window.location.href = orafHtml;
+        }
+        // 버튼 요소를 가져와서 클릭 이벤트에 함수 연결
+        document.getElementById('button1').addEventListener('click', goToOrafHtml);
+
+
+
+        // plus 버튼을 눌렀을 때 호출되는 함수
+        document.getElementById('plus').addEventListener('click', function () {
+        // 가격을 업데이트하는 함수 호출
+        updateCount(1);
+        });
+
+        // minus 버튼을 눌렀을 때 호출되는 함수
+        document.getElementById('minus').addEventListener('click', function () {
+        // 가격을 업데이트하는 함수 호출
+        updateCount(-1);
+        });
+
+        // 가격을 업데이트하는 함수
+        function updateCount(change) {
+        // 가격을 표시하는 h3 요소 가져오기
+        let priceElement = document.querySelector('.count h3');
+
+        // 현재 가격을 가져오기
+        let currentPrice = parseInt(priceElement.textContent);
+
+        // 가격을 증가 또는 감소시킴
+        currentPrice += change;
+
+        // 0 미만으로 내려가지 않도록 조건 추가
+        if (currentPrice < 0) {
+        currentPrice = 0;
+        }
+
+        // 변경된 가격을 표시
+        priceElement.textContent = `금액: ${currentPrice}원`;
+        }
+        
     </script>
 </body>
 </html>
