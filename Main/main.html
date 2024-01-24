@@ -1,11 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<style>
+  .card-group.container {
+    background-size: 100% 100%;
+    background-color: gray;
+}
+
+</style>
 </head>
-<body>
-    <h1>hello</h1>
+<body >
+<!-- BootStrap navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+<!-- 제품 목록 페이지 -->
+<div class="card-group container">
+    <div class="card">
+      <img src="bapbap.png">
+      <div class="card-body">
+        <h5>삼색 채소 볶음밥</h5>
+        <p>가격 : 15000₩</p>
+        <button class="btn btn-primary" id="myButton0">주문하기</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="yb.png">
+      <div class="card-body">
+        <h5>양상추 베이컨 볶음밥</h5>
+        <p>가격 : 12000₩</p>
+        <button class="btn btn-primary" id="myButton1">주문하기</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="omr.png">
+      <div class="card-body">
+        <h5>황금 오므라이스</h5>
+        <p>가격 : 15000₩</p>
+        <button class="btn btn-primary" id="myButton2">주문하기</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="bibimbap.png">
+      <div class="card-body">
+        <!-- <form  class = "container my-5 form-group"> -->
+        <h5>비빔밥</h5>
+        <p>가격 : 10000₩</p>
+      
+        <!-- </form>  -->
+        <button class="btn btn-primary" id="myButton3">주문하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //제품 목록 바인딩 데이터 -> github에 있는 json 파일에서 가져와 보기
+    var products = [
+      { id: 0, price: 70000, title: '코튼베이직 반팔티' },
+      { id: 1, price: 50000, title: '하이넥 숏다운 점퍼' },
+      { id: 2, price: 60000, title: '베스트 웜 롱다운' },
+      { id: 2, price: 60000, title: '패딩 하이넥 다운' }
+    ];
+  
+    let cards = document.querySelectorAll(".card-body");
+  
+    for (let i = 0; i < cards.length; i++) {
+      let id = products[i].id;
+      // products 객체 변수를 이용하여 데이터 바인딩
+      cards[i].querySelector("h5").innerText = products[i].title;
+      cards[i].querySelector("p").innerText = "가격: " + products[i].price + "₩";
+      cards[i].querySelector("button").addEventListener('click', goToOrderHtml);
+    }
+  
+    // "주문하기" 버튼 클릭 이벤트를 처리하고 주문 페이지로 이동하는 함수
+    function goToOrderHtml() {
+      // 주문 페이지의 파일 경로를 여기에 입력하세요.
+      var goToOrderHtml = 'order.html';
+      // 현재 창의 위치를 주문 페이지의 파일 경로로 변경
+      window.location.href = goToOrderHtml;
+    }
+  </script>
+  
 </body>
 </html>
