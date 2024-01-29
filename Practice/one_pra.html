@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("hello world!");  //console.log() 콘솔창에 출력
+        alert("hello."); //팝업창 띄워 출력해줌
+        // var 쓰지 않기 , let 또는 const 사용하기
+        let userName = prompt("이름을 알려주세요.", "현서"); //prompt(question, [default]); 
+        //프롬프트 창에 매개변수로 받은 "질문(question)"을 넣어 사용자에게 보여줌. >취소일 땐 null값 반환.
+        //프롬프트 함수는 항상 문자열을 반환.
+        alert("방문객: "+ userName); 
+
+        let isTeaWanted = confirm("차 한잔 드릴까요?");
+        alert("차 주문 여부: " + isTeaWanted); //확인 > ture / 취소 > false
+
+        //이벤트 리스너 : 마우스 클릭, 키보드 입력 등 "이벤트"가 발생했을 때 처리하는 행동을 작성하는 곳.
+        //ex) <button type="button" onclick="alert('hello world')">클릭</button>
+        
+        //document.getElementsById(아이디) > 해당 아이디의 요소를 선택함.
+        //document.getElementsByName(name 속성값) > 해당 name 속성값을 가지는 요소를 선택함.
+        //document.querySelectorAll(선택자) > 해당 선택자로 선택되는 요소를 모두 선택함.
+        //document.write(텍스트) > HTML 출력 스트림을 통해 텍스트 출력.
+
+        //(응용)
+        //document.getElementById(아이디).onclick = function(){ 실행할 코드 }
+        // > 마우스 클릭 이벤트와 연결된 이벤트 핸들러 코드를 추가함.
+
+    </script>
+</body>
+</html>
